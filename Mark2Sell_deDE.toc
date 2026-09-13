@@ -1,0 +1,11 @@
+## Interface: 120100
+## Version: 1.0.0
+## Title: Mark2Sell (German)
+## Title-deDE: Mark2Sell (Deutsch)
+## Notes: German language pack for Mark2Sell.
+## Notes-deDE: Deutsches Sprachpaket für Mark2Sell.
+## Author: Mik1701
+## Dependencies: Mark2Sell
+## X-Category: Inventory
+
+Locale.lua
