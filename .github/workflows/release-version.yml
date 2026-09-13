@@ -1,5 +1,6 @@
-# Bumps ## Version in Mark2Sell.toc and pushes git tag vX.Y.Z when a commit message
-# contains an explicit release marker. CurseForge (BigWigs packager) can then package the tag.
+# Bumps ## Version in Mark2Sell_deDE.toc and pushes git tag vX.Y.Z when a commit
+# message contains an explicit release marker. CurseForge (BigWigs packager) can
+# then package the tag.
 #
 # Trigger format (anywhere in the commit message, case-sensitive tag name):
 #   [release] 1.2.3
@@ -8,9 +9,9 @@
 #
 # The workflow commits a follow-up "chore(release): ..." without [release], so it does not loop.
 #
-# Repo layout: set TOC_FILE to the path of Mark2Sell.toc relative to the repository root.
-# - Addon-only repo (Mark2Sell.toc at root): Mark2Sell.toc
-# - Monorepo: e.g. src/Mark2Sell/Mark2Sell.toc
+# Repo layout: set TOC_FILE to the path of Mark2Sell_deDE.toc relative to the repository root.
+# - Addon-only repo (Mark2Sell_deDE.toc at root): Mark2Sell_deDE.toc
+# - Monorepo: e.g. src/Mark2Sell_deDE/Mark2Sell_deDE.toc
 
 name: Release version from commit
 
@@ -21,14 +22,14 @@ on:
       - master
 
 concurrency:
-  group: mark2sell-release-${{ github.ref }}
+  group: mark2sell-deDE-release-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
   contents: write
 
 env:
-  TOC_FILE: Mark2Sell.toc
+  TOC_FILE: Mark2Sell_deDE.toc
 
 jobs:
   bump-and-tag:
@@ -72,7 +73,7 @@ jobs:
             exit 1
           fi
 
-      - name: Update Mark2Sell.toc version
+      - name: Update Mark2Sell_deDE.toc version
         if: steps.ver.outputs.should_run == 'true'
         env:
           VERSION: ${{ steps.ver.outputs.version }}
@@ -88,7 +89,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$TOC_FILE"
-          git commit -m "chore(release): Mark2Sell $VERSION" -m "Automated bump from commit message [release] $VERSION"
+          git commit -m "chore(release): Mark2Sell_deDE $VERSION" -m "Automated bump from commit message [release] $VERSION"
           git push origin "HEAD:${GITHUB_REF_NAME}"
-          git tag -a "v$VERSION" -m "Mark2Sell $VERSION"
+          git tag -a "v$VERSION" -m "Mark2Sell_deDE $VERSION"
           git push origin "v$VERSION"
